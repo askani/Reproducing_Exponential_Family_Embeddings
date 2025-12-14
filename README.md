@@ -1,0 +1,2 @@
+# statlearning_project_EF_EMB
+Studying Exponential Family Embeddings
