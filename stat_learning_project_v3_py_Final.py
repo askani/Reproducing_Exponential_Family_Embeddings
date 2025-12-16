@@ -31,10 +31,10 @@ np.random.seed(42)
 # GPU Setup
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 if torch.cuda.is_available():
-    print(f"🎮 GPU: {torch.cuda.get_device_name(0)}")
+    print(f"GPU: {torch.cuda.get_device_name(0)}")
     print(f"   Memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.1f} GB")
 else:
-    print("⚠️ No GPU detected - using CPU")
+    print("No GPU detected - using CPU")
 print(f"\n📍 Using device: {DEVICE}")
 
 class MarketBasketDataset:
@@ -980,15 +980,13 @@ trained_models = {}
 
 ALL_MODELS = ['HPF', 'Poisson-PCA', 'P-EMB', 'P-EMB-DW', 'AP-EMB']
 
-print(f"🎯 Embedding dimensions: {K_VALUES}")
-print(f"📦 Batch size: {BATCH_SIZE}")
-print(f"➖ Negative samples: {N_NEG}")
-print(f"📍 Device: {DEVICE}")
+print(f"Embedding dimensions: {K_VALUES}")
+print(f"Batch size: {BATCH_SIZE}")
+print(f"Negative samples: {N_NEG}")
+print(f"Device: {DEVICE}")
 
 # Train HPF
-print("\n" + "="*60)
-print("🔷 Training HPF (Baseline)")
-print("="*60)
+print("Training HPF (Baseline)")
 
 results['HPF'] = {}
 trained_models['HPF'] = {}
@@ -1004,12 +1002,11 @@ for K in K_VALUES:
     metrics = evaluate_model(model, test_data)
     results['HPF'][K] = metrics
     trained_models['HPF'][K] = model
-    print(f"✅ HPF (K={K}): NLL = {format_result(metrics['normalized_llh'], metrics['normalized_llh_se'])}")
+    print(f"HPF (K={K}): NLL = {format_result(metrics['normalized_llh'], metrics['normalized_llh_se'])}")
 
 # Train Poisson PCA
-print("\n" + "="*60)
-print("🔶 Training Poisson PCA")
-print("="*60)
+
+print("Training Poisson PCA")
 
 results['Poisson-PCA'] = {}
 trained_models['Poisson-PCA'] = {}
@@ -1025,12 +1022,10 @@ for K in K_VALUES:
     metrics = evaluate_model(model, test_data)
     results['Poisson-PCA'][K] = metrics
     trained_models['Poisson-PCA'][K] = model
-    print(f"✅ Poisson-PCA (K={K}): {format_result(metrics['normalized_llh'], metrics['normalized_llh_se'])}")
+    print(f"Poisson-PCA (K={K}): {format_result(metrics['normalized_llh'], metrics['normalized_llh_se'])}")
 
 # Train P-EMB (Multiplicative Poisson Embedding)
-print("\n" + "="*60)
-print("🟢 Training P-EMB (Multiplicative)")
-print("="*60)
+print("Training P-EMB (Multiplicative)")
 
 results['P-EMB'] = {}
 trained_models['P-EMB'] = {}
@@ -1046,12 +1041,10 @@ for K in K_VALUES:
     metrics = evaluate_model(model, test_data)
     results['P-EMB'][K] = metrics
     trained_models['P-EMB'][K] = model
-    print(f"✅ P-EMB (K={K}): NLL = {format_result(metrics['normalized_llh'], metrics['normalized_llh_se'])}")
+    print(f"P-EMB (K={K}): NLL = {format_result(metrics['normalized_llh'], metrics['normalized_llh_se'])}")
 
 # Train P-EMB Downweighted (CORRECTED)
-print("\n" + "="*60)
-print("🟡 Training P-EMB Downweighted (w₀=0.1)")
-print("="*60)
+print("Training P-EMB Downweighted (w₀=0.1)")
 
 results['P-EMB-DW'] = {}
 trained_models['P-EMB-DW'] = {}
@@ -1067,12 +1060,10 @@ for K in K_VALUES:
     metrics = evaluate_model(model, test_data)
     results['P-EMB-DW'][K] = metrics
     trained_models['P-EMB-DW'][K] = model
-    print(f"✅ P-EMB-DW (K={K}): {format_result(metrics['normalized_llh'], metrics['normalized_llh_se'])}")
+    print(f"P-EMB-DW (K={K}): {format_result(metrics['normalized_llh'], metrics['normalized_llh_se'])}")
 
 # Train AP-EMB (CORRECTED)
-print("\n" + "="*60)
-print("🔴 Training AP-EMB (CORRECTED)")
-print("="*60)
+print("Training AP-EMB (CORRECTED)")
 
 results['AP-EMB'] = {}
 trained_models['AP-EMB'] = {}
@@ -1088,11 +1079,11 @@ for K in K_VALUES:
     metrics = evaluate_model(model, test_data)
     results['AP-EMB'][K] = metrics
     trained_models['AP-EMB'][K] = model
-    print(f"✅ AP-EMB (K={K}): {format_result(metrics['normalized_llh'], metrics['normalized_llh_se'])}")
+    print(f"AP-EMB (K={K}): {format_result(metrics['normalized_llh'], metrics['normalized_llh_se'])}")
 
-print("\n" + "="*80)
-print("📈 RESULTS: Normalized Log-Likelihood (higher is better)")
-print("="*80)
+
+print("RESULTS: Normalized Log-Likelihood (higher is better)")
+
 
 header = f"{'Model':<20}"
 for K in K_VALUES:
