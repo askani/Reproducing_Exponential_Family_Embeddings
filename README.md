@@ -26,7 +26,6 @@ This project reproduces the Exponential Family Embeddings framework for learning
 ```bash
 # Clone the repository
 git clone https://github.com/yourusername/exponential-family-embeddings.git
-cd exponential-family-embeddings
 
 # Create virtual environment (optional but recommended)
 python -m venv venv
@@ -51,7 +50,7 @@ umap-learn>=0.5.0
 
 ### Run on Google Colab
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yourusername/exponential-family-embeddings/blob/main/notebooks/Exponential_Family_Embeddings.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1l7fjNNbNhtjLGaWbSHo7st7mKQRJGxcd?usp=sharing)
 
 1. Open the notebook in Google Colab
 2. Go to `Runtime → Change runtime type → GPU`
@@ -63,15 +62,8 @@ umap-learn>=0.5.0
 exponential-family-embeddings/
 ├── README.md
 ├── requirements.txt
-├── LICENSE
 ├── notebooks/
 │   └── Exponential_Family_Embeddings.ipynb    # Main notebook (Colab-ready)
-├── src/
-│   ├── __init__.py
-│   ├── models.py              # P-EMB, AP-EMB, HPF, Poisson PCA
-│   ├── data_utils.py          # Data loading and preprocessing
-│   ├── evaluation.py          # Normalized log-likelihood metrics
-│   └── visualization.py       # t-SNE, UMAP plotting utilities
 ├── data/
 │   └── README.md              # Instructions for obtaining datasets
 └── results/
@@ -83,6 +75,7 @@ exponential-family-embeddings/
 ### Market Basket Data
 
 The dataset should contain grocery transaction records with the following columns:
+Download from [Dunnhumby Data](https://www.dunnhumby.com/source-files/):
 
 | Column | Description |
 |--------|-------------|
@@ -96,84 +89,6 @@ The dataset should contain grocery transaction records with the following column
 Download from [MovieLens](https://grouplens.org/datasets/movielens/):
 - Ratings ≥ 3 are converted to counts
 - Ratings < 3 are set to zero
-
-### Data Preprocessing
-
-```python
-from src.data_utils import MarketBasketData
-
-# Load and preprocess data
-data = MarketBasketData(
-    df,
-    basket_col='basket_id',
-    item_col='product_id',
-    qty_col='quantity',
-    min_item_freq=10,      # Filter rare items
-    min_basket_size=2      # Remove single-item baskets
-)
-
-# Train/validation/test split
-train_data, val_data, test_data = data.train_val_test_split(
-    test_frac=0.05,
-    val_frac=0.05
-)
-```
-
-## 🔧 Usage
-
-### Training Models
-
-```python
-from src.models import PEMB_MiniBatch, PEMB_Downweighted_MiniBatch, APEMB_MiniBatch
-
-# Initialize model
-model = PEMB_Downweighted_MiniBatch(
-    n_items=data.n_items,
-    n_factors=50,           # Embedding dimension K
-    zero_weight=0.1,        # Downweight factor for zeros
-    reg=1e-6,               # L2 regularization
-    device='cuda'           # Use GPU
-)
-
-# Train
-model.fit(
-    train_data,
-    n_epochs=100,
-    batch_size=2048,
-    lr=0.1,                 # Adagrad learning rate
-    n_neg=10,               # Negative samples per positive
-    patience=10             # Early stopping patience
-)
-
-# Get embeddings
-item_embeddings = model.get_item_embeddings()
-context_embeddings = model.get_context_embeddings()
-```
-
-### Evaluation
-
-```python
-from src.evaluation import evaluate_model
-
-# Evaluate on test set
-metrics = evaluate_model(model, test_data, n_bootstrap=100)
-
-print(f"Normalized Log-Likelihood: {metrics['normalized_llh']:.4f} ± {metrics['normalized_llh_se']:.4f}")
-```
-
-### Visualization
-
-```python
-from src.visualization import plot_embeddings_umap
-
-# UMAP visualization
-plot_embeddings_umap(
-    trained_models,
-    train_data,
-    K=50,
-    n_clusters=10
-)
-```
 
 ## 📈 Results
 
@@ -226,17 +141,6 @@ If you use this code, please cite the original paper:
 }
 ```
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
 ## 🙏 Acknowledgments
 
 - Original paper: [Rudolph et al. (2016) - Exponential Family Embeddings](https://papers.nips.cc/paper/2016/hash/7b7a53e239400a13bd6be6c91c4f6c4e-Abstract.html)
@@ -244,7 +148,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - [UMAP](https://umap-learn.readthedocs.io/) for dimensionality reduction
 
 ---
-
-<p align="center">
-  Made with ❤️ for reproducible research
-</p>
