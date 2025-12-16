@@ -26,6 +26,7 @@ This project reproduces the Exponential Family Embeddings framework for learning
 ```bash
 # Clone the repository
 git clone https://github.com/yourusername/exponential-family-embeddings.git
+cd exponential-family-embeddings
 
 # Create virtual environment (optional but recommended)
 python -m venv venv
