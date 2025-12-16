@@ -64,9 +64,9 @@ exponential-family-embeddings/
 ├── requirements.txt
 ├── Market_Basekt_Data_Analysis.ipynb    # Main notebook (Colab-ready)
 ├── data/
-│   └── README.md              # Instructions for obtaining datasets
+│   └── data.csv.zip              # raw market basket dataset
 └── results/
-    └── figures/               # Generated plots and visualizations
+    └── png files               # Generated plots and visualizations
 ```
 
 ## 📊 Datasets
