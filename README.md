@@ -120,14 +120,6 @@ Download from [MovieLens](https://grouplens.org/datasets/movielens/):
 - ✅ **Downweighting zeros improves performance on sparse data**
 - ✅ **AP-EMB limited by non-negativity constraint** — cannot model negative correlations
 
-## 🖼️ Embedding Visualizations
-
-<p align="center">
-  <img src="results/figures/tsne_comparison.png" alt="t-SNE Visualization" width="800"/>
-</p>
-
-P-EMB-DW produces the clearest cluster separation, while AP-EMB shows degenerate patterns due to non-negativity constraints.
-
 ## 📚 Reference
 
 If you use this code, please cite the original paper:
