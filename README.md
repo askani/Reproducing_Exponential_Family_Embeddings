@@ -137,7 +137,7 @@ If you use this code, please cite the original paper:
 
 ## 🙏 Acknowledgments
 
-- Original paper: [Rudolph et al. (2016) - Exponential Family Embeddings](https://papers.nips.cc/paper/2016/hash/7b7a53e239400a13bd6be6c91c4f6c4e-Abstract.html)
+- Original paper: [Rudolph et al. (2016) - Exponential Family Embeddings](https://arxiv.org/abs/1608.00778)
 - [PyTorch](https://pytorch.org/) for deep learning framework
 - [UMAP](https://umap-learn.readthedocs.io/) for dimensionality reduction
 
