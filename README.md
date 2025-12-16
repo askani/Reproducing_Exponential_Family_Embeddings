@@ -62,8 +62,7 @@ umap-learn>=0.5.0
 exponential-family-embeddings/
 ├── README.md
 ├── requirements.txt
-├── notebooks/
-│   └── Exponential_Family_Embeddings.ipynb    # Main notebook (Colab-ready)
+├── Market_Basekt_Data_Analysis.ipynb    # Main notebook (Colab-ready)
 ├── data/
 │   └── README.md              # Instructions for obtaining datasets
 └── results/
