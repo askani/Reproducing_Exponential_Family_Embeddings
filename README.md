@@ -26,14 +26,15 @@ This project reproduces the Exponential Family Embeddings framework for learning
 ```bash
 # Clone the repository
 git clone https://github.com/yourusername/exponential-family-embeddings.git
+
+# Install dependencies
+pip install -r requirements.txt
+
 cd exponential-family-embeddings
 
 # Create virtual environment (optional but recommended)
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
 ```
 
 ### Requirements
@@ -63,7 +64,8 @@ umap-learn>=0.5.0
 exponential-family-embeddings/
 ├── README.md
 ├── requirements.txt
-├── Market_Basekt_Data_Analysis.ipynb    # Main notebook (Colab-ready)
+├── exponential-family-embeddings
+|   └── Market_Basekt_Data_Analysis.ipynb    # Main notebook (Colab-ready)
 ├── data/
 │   └── data.csv.zip              # raw market basket dataset
 └── results/
