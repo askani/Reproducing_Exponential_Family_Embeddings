@@ -65,7 +65,9 @@ exponential-family-embeddings/
 ├── README.md
 ├── requirements.txt
 ├── exponential-family-embeddings
-|   └── Market_Basekt_Data_Analysis.ipynb    # Main notebook (Colab-ready)
+|   └── Market_Basekt_Data_Analysis.ipynb    # For Market Basket Data (Colab-ready)
+|   └── Market_Basekt_Data_Analysis.py
+|   └── All remaining files are on Movie Lens Data
 ├── data/
 │   └── data.csv.zip              # raw market basket dataset
 └── results/
